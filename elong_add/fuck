@@ -1,0 +1,32 @@
+I am feeling so retarded, what am I doing wrong?
+I have two numbers sum and power, let's say that sum is 35162, and power being digits - 1, so in this case 4.
+I want to convert int sum in reverse order to the char array, code works fine until it hits 35000, what am I doing wrong, I don't fucking understand
+[code]
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+  char arr[100];
+  int sum = 35162, power = 4;
+
+  int i;
+  for(i = 0; i <= power ; ++i){
+      printf("before: %d, arr: %d ", sum, arr[i]);
+      arr[i] = sum % (int)pow(10, i + 1);
+      sum -= arr[i];
+      printf("after: %d, arr: %d\n", sum, arr[i]);
+      arr[i] /= (int)pow(10, i );
+  }
+
+  return 0;
+}
+[/code]
+output
+[code]
+before: 35162, arr: 0 after: 35160, arr: 2
+before: 35160, arr: 0 after: 35100, arr: 60
+before: 35100, arr: 0 after: 35000, arr: 100
+before: 35000, arr: 0 after: 35120, arr: -120
+before: 35120, arr: 0 after: 35072, arr: 48
+[/code]
